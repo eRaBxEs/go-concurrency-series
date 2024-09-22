@@ -9,9 +9,10 @@ func someFunc(n int) {
 }
 
 func main() {
-	someFunc(1)
-	someFunc(2)
-	someFunc(3)
+	// with go routine added to each function, they are said to run not in sync with main, they are therefore asynchronous
+	go someFunc(1)
+	go someFunc(2)
+	go someFunc(3)
 
 	fmt.Println("Hi")
 }
