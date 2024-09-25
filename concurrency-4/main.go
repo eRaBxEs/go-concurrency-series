@@ -11,6 +11,8 @@ func main() {
 
 	ch := make(chan int) // create a channel
 
+	defer close(ch) // to ensure that channel is closed
+
 }
 
 func goRoutine1(ch chan int, m *sync.Mutex) {
