@@ -20,3 +20,11 @@ func goRoutine1(ch chan int, m *sync.Mutex) {
 		fmt.Println("Value received from channel in goRoutine1:", i)
 	}
 }
+
+func goRoutine2(ch chan int, m *sync.Mutex) {
+	m.Lock()
+	defer m.Unlock()
+	for i := range ch {
+		fmt.Println("Value received from channel in goRoutine2:", i)
+	}
+}
