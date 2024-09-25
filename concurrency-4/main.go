@@ -14,7 +14,7 @@ func main() {
 	defer close(ch) // to ensure that channel is closed
 
 	go goRoutine1(ch, &m)
-	ch <- 1
+	ch <- 1 // Note that a value is sent to the channel after the first goRoutine1 is spawned.
 
 }
 
