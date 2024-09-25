@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -10,4 +11,12 @@ func main() {
 
 	ch := make(chan int) // create a channel
 
+}
+
+func goRoutine1(ch chan int, m *sync.Mutex) {
+	m.Lock()
+	defer m.Unlock()
+	for i := range ch {
+		fmt.Println("Value received from channel in goRoutine1:", i)
+	}
 }
