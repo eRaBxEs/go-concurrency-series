@@ -13,6 +13,9 @@ func main() {
 
 	defer close(ch) // to ensure that channel is closed
 
+	go goRoutine1(ch, &m)
+	ch <- 1
+
 }
 
 func goRoutine1(ch chan int, m *sync.Mutex) {
