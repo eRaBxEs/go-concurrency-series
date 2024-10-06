@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
+	// making 2 unbuffered channel;communication between goroutines in an unbuffered channel is synchronus, it is blocking
 	myChannel := make(chan string)
 	anotherChannel := make(chan string)
 
@@ -20,7 +21,7 @@ func main() {
 	// if the two messages are ready at the same time, it picks one randomly
 	// note that the select is also going to block till it receives a message from either of the channel
 
-	select {
+	select { // either of this blocks which makes the communcation here synchronous
 	case messageFromMychannel := <-anotherChannel:
 		fmt.Println(messageFromMychannel)
 
